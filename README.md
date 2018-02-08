@@ -1,4 +1,4 @@
-# 2nd place solution for SemEval 2018 task 11: [Reading Comprehension with Commonsense Knowledge](https://competitions.codalab.org/competitions/17184)
+## SemEval 2018 task 11: [Reading Comprehension with Commonsense Knowledge](https://competitions.codalab.org/competitions/17184)
 
 ## Model Overview
 
