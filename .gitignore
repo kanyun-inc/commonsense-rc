@@ -1,0 +1,14 @@
+.idea/
+__pycache__/
+*.pyc
+*.log
+trash/
+data/glove.840B.300d.txt
+*processed.json
+nohup.out
+checkpoint/
+data/RACE/
+*.mdl
+answer.txt
+final_output.zip
+data/concept.filter
