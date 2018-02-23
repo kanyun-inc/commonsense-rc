@@ -21,6 +21,8 @@ If you choose to preprocess dataset by yourself,
 please preprocess official dataset by `python3 preprocess.py`, download [Glove embeddings](http://nlp.stanford.edu/data/glove.840B.300d.zip), 
 and also remember to download [ConceptNet](https://github.com/commonsense/conceptnet5/wiki/Downloads) and preprocess it with `python3 preprocess.py conceptnet`
 
+We transform original XML format data to Json format with [xml2json](https://github.com/hay/xml2json) by running `./xml2json.py --pretty --strip_text -t xml2json -o test-data.json test-data.xml`
+
 ### Step 2:
 
 Train model with `python3 main.py --gpu=0`,
