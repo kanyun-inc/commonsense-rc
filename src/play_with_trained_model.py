@@ -1,5 +1,3 @@
-import os
-
 from config import args
 from utils import load_data, build_vocab, gen_submission, gen_final_submission, eval_based_on_outputs
 from model import Model

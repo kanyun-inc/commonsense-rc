@@ -255,8 +255,8 @@ def preprocess_dataset(path, is_test_set=False):
             qs = [q for q in obj['questions']['question']]
             dummy = qs[0]['@text']
         except:
+            # some passages have only one question
             qs = [obj['questions']['question']]
-            print(obj)
         for q in qs:
             q_dict = tokenize(q['@text'])
             q_id = q['@id']

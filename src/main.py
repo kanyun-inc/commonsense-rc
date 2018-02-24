@@ -29,6 +29,7 @@ if __name__ == '__main__':
     best_dev_acc = 0.0
     os.makedirs('./checkpoint', exist_ok=True)
     checkpoint_path = './checkpoint/%d-%s.mdl' % (args.seed, datetime.now().isoformat())
+    print('Trained model will be saved to %s.' % checkpoint_path)
 
     for i in range(args.epoch):
         print('Epoch %d...' % i)

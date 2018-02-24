@@ -1,1 +1,1 @@
-nohup python3 -u main.py --gpu=0 > run.log &
+nohup python3 -u src/main.py --gpu 0 > run.log &
