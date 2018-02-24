@@ -1,8 +1,12 @@
-## SemEval 2018 task 11: [Reading Comprehension with Commonsense Knowledge](https://competitions.codalab.org/competitions/17184)
+## SemEval 2018 task 11: [Reading Comprehension using Commonsense Knowledge](https://competitions.codalab.org/competitions/17184)
 
 ## Model Overview
 
-We use attention-based LSTM.
+We use attention-based LSTM networks.
+
+The overall model architecture is shown below:
+
+![Three-way Attentive Networks](image/TriAN.jpg)
 
 ## How to run
 
