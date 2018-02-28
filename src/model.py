@@ -46,9 +46,7 @@ class Model:
                 sz = list(p.size())
                 if sz[0] == len(vocab):
                     sz[0] = self.finetune_topk
-                t = 1
-                for s in sz: t *= s
-                num_parameters += t
+                num_parameters += np.prod(sz)
         print('Number of parameters: ', num_parameters)
 
     def train(self, train_data):

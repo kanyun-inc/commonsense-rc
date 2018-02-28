@@ -1,8 +1,6 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.autograd import Variable
-import numpy as np
 
 import layers
 from utils import vocab, pos_vocab, ner_vocab, rel_vocab
