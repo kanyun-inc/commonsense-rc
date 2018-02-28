@@ -25,6 +25,8 @@ If you choose to preprocess dataset by yourself,
 please preprocess official dataset by `python3 src/preprocess.py`, download [Glove embeddings](http://nlp.stanford.edu/data/glove.840B.300d.zip), 
 and also remember to download [ConceptNet](https://github.com/commonsense/conceptnet5/wiki/Downloads) and preprocess it with `python3 src/preprocess.py conceptnet`
 
+Official dataset can be downloaded on [hidrive](https://my.hidrive.com/lnk/DhAhE8B5).
+
 We transform original XML format data to Json format with [xml2json](https://github.com/hay/xml2json) by running `./xml2json.py --pretty --strip_text -t xml2json -o test-data.json test-data.xml`
 
 ### Step 2:
