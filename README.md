@@ -4,6 +4,9 @@
 
 We use attention-based LSTM networks.
 
+For more technical details,
+please refer to our paper at [https://arxiv.org/abs/1803.00191](https://arxiv.org/abs/1803.00191)
+
 The overall model architecture is shown below:
 
 ![Three-way Attentive Networks](image/TriAN.jpg)
