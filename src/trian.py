@@ -5,10 +5,10 @@ import torch.nn.functional as F
 import layers
 from utils import vocab, pos_vocab, ner_vocab, rel_vocab
 
-class QANet(nn.Module):
+class TriAN(nn.Module):
 
     def __init__(self, args):
-        super(QANet, self).__init__()
+        super(TriAN, self).__init__()
         self.args = args
         self.embedding_dim = 300
         self.embedding = nn.Embedding(len(vocab), self.embedding_dim, padding_idx=0)

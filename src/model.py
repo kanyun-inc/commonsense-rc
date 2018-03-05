@@ -1,7 +1,6 @@
 import logging
 import copy
 import torch
-import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 from torch.autograd import Variable
@@ -10,7 +9,7 @@ import numpy as np
 
 from utils import vocab
 from doc import batchify
-from qanet import QANet
+from trian import TriAN
 
 logger = logging.getLogger()
 
@@ -25,9 +24,8 @@ class Model:
         print('Use cuda:', self.use_cuda)
         if self.use_cuda:
             torch.cuda.set_device(int(args.gpu))
-        self.network = QANet(args)
+        self.network = TriAN(args)
         self.init_optimizer()
-        self.updates = 0
         if args.pretrained:
             print('Load pretrained model from %s...' % args.pretrained)
             self.load(args.pretrained)
@@ -51,6 +49,7 @@ class Model:
 
     def train(self, train_data):
         self.network.train()
+        self.updates = 0
         iter_cnt, num_iter = 0, (len(train_data) + self.batch_size - 1) // self.batch_size
         for batch_input in self._iter_data(train_data):
             feed_input = [x for x in batch_input[:-1]]
