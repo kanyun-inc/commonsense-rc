@@ -71,7 +71,7 @@ class Model:
             if self.updates % 20 == 0:
                 print('Iter: %d/%d, Loss: %f' % (iter_cnt, num_iter, loss.data[0]))
         self.scheduler.step()
-        print('LR:', self.scheduler.get_lr())
+        print('LR:', self.scheduler.get_lr()[0])
 
     def evaluate(self, dev_data, debug=False, eval_train=False):
         if len(dev_data) == 0:
