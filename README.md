@@ -1,4 +1,4 @@
-## SemEval 2018 task 11: [Reading Comprehension using Commonsense Knowledge](https://competitions.codalab.org/competitions/17184)
+## SemEval 2018 task 11: [Machine Comprehension using Commonsense Knowledge](https://competitions.codalab.org/competitions/17184)
 
 ## Model Overview
 
