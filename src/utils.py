@@ -117,7 +117,7 @@ def build_vocab(data=None):
             cnt += Counter(ex.passage.split())
             cnt += Counter(ex.question.split())
             cnt += Counter(ex.choice.split())
-        for key, val in cnt.most_common(10**8):
+        for key, val in cnt.most_common():
             vocab.add(key)
         print('Vocabulary size: %d' % len(vocab))
         writer = open('./data/vocab', 'w', encoding='utf-8')
@@ -134,7 +134,7 @@ def build_vocab(data=None):
         for ex in data:
             cnt += Counter(ex.d_pos)
             cnt += Counter(ex.q_pos)
-        for key, val in cnt.most_common(10**8):
+        for key, val in cnt.most_common():
             if key: pos_vocab.add(key)
         print('POS vocabulary size: %d' % len(pos_vocab))
         writer = open('./data/pos_vocab', 'w', encoding='utf-8')
@@ -150,7 +150,7 @@ def build_vocab(data=None):
         cnt = Counter()
         for ex in data:
             cnt += Counter(ex.d_ner)
-        for key, val in cnt.most_common(10**8):
+        for key, val in cnt.most_common():
             if key: ner_vocab.add(key)
         print('NER vocabulary size: %d' % len(ner_vocab))
         writer = open('./data/ner_vocab', 'w', encoding='utf-8')
