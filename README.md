@@ -7,6 +7,8 @@ We use attention-based LSTM networks.
 For more technical details,
 please refer to our paper at [https://arxiv.org/abs/1803.00191](https://arxiv.org/abs/1803.00191)
 
+Official leaderboard is available at [https://competitions.codalab.org/competitions/17184#results](https://competitions.codalab.org/competitions/17184#results) (Evaluation Phase)
+
 The overall model architecture is shown below:
 
 ![Three-way Attentive Networks](image/TriAN.jpg)
@@ -19,13 +21,14 @@ pytorch >= 0.2
 
 spacy >= 2.0
 
-GPU machine is preferred.
+GPU machine is preferred,
+training on CPU will be much slower.
 
-### Step 1: 
+### Step 1:
 Download preprocessed data from [Google Drive](https://drive.google.com/open?id=1M1saVYk-4Xh0Y0Ok6e8liDLnElnGc0P4) or [Baidu Cloud Disk](https://pan.baidu.com/s/1kWHj2z9), unzip and put them under folder data/.
- 
-If you choose to preprocess dataset by yourself, 
-please preprocess official dataset by `python3 src/preprocess.py`, download [Glove embeddings](http://nlp.stanford.edu/data/glove.840B.300d.zip), 
+
+If you choose to preprocess dataset by yourself,
+please preprocess official dataset by `python3 src/preprocess.py`, download [Glove embeddings](http://nlp.stanford.edu/data/glove.840B.300d.zip),
 and also remember to download [ConceptNet](https://github.com/commonsense/conceptnet5/wiki/Downloads) and preprocess it with `python3 src/preprocess.py conceptnet`
 
 Official dataset can be downloaded on [hidrive](https://my.hidrive.com/lnk/DhAhE8B5).
