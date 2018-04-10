@@ -1,4 +1,4 @@
-## SemEval 2018 task 11: [Machine Comprehension using Commonsense Knowledge](https://competitions.codalab.org/competitions/17184)
+## [Yuanfudao at SemEval-2018 Task 11: Three-way Attention and Relational Knowledge for Commonsense Machine Comprehension](https://arxiv.org/abs/1803.00191)
 
 ## Model Overview
 
@@ -40,7 +40,7 @@ We transform original XML format data to Json format with [xml2json](https://git
 Train model with `python3 src/main.py --gpu 0`,
 the accuracy on development set will be approximately 83% after 50 epochs.
 
-## How to replicate our competition results
+## How to reproduce our competition results
 
 Following above instructions you will get a model with ~81.5% accuracy on test set,
 we use two additional techniques for our official submission (~83.95% accuracy):
