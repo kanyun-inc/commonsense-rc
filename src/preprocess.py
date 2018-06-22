@@ -337,7 +337,7 @@ def preprocess_conceptnet(path):
         lan2, w2 = _get_lan_and_w(arg2)
         if lan2 != 'en' or not all(w in utils.vocab for w in w2.split('_')):
             continue
-        obj = json.loads(fs[-1])
+        obj = json.loads(''.join(fs[(fs.index('{"dataset":')):]))
         if obj['weight'] < 1.0:
             continue
         writer.write('%s %s %s\n' % (relation, w1, w2))
