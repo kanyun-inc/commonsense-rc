@@ -331,13 +331,19 @@ def preprocess_conceptnet(path):
     for line in open(path, 'r', encoding='utf-8'):
         fs = line.split('\t')
         relation, arg1, arg2 = fs[1].split('/')[-1], fs[2], fs[3]
-        lan1, w1 = _get_lan_and_w(arg1)
+        try:
+            lan1, w1 = _get_lan_and_w(arg1)
+        except IndexError:
+            continue
         if lan1 != 'en' or not all(w in utils.vocab for w in w1.split('_')):
             continue
-        lan2, w2 = _get_lan_and_w(arg2)
+        try:
+            lan2, w2 = _get_lan_and_w(arg2)
+        except IndexError:
+            continue
         if lan2 != 'en' or not all(w in utils.vocab for w in w2.split('_')):
             continue
-        obj = json.loads(fs[-1])
+        obj = json.loads(''.join(fs[(fs.index('{"dataset":')):]))
         if obj['weight'] < 1.0:
             continue
         writer.write('%s %s %s\n' % (relation, w1, w2))
