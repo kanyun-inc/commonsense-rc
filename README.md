@@ -7,6 +7,9 @@ We use attention-based LSTM networks.
 For more technical details,
 please refer to our paper at [https://arxiv.org/abs/1803.00191](https://arxiv.org/abs/1803.00191)
 
+For more details about this task,
+please refer to paper [SemEval-2018 Task 11: Machine Comprehension Using Commonsense Knowledge](http://aclweb.org/anthology/S18-1119).
+
 Official leaderboard is available at [https://competitions.codalab.org/competitions/17184#results](https://competitions.codalab.org/competitions/17184#results) (Evaluation Phase)
 
 The overall model architecture is shown below:
