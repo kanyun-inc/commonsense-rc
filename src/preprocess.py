@@ -329,7 +329,7 @@ def preprocess_conceptnet(path):
         arg = arg.strip('/').split('/')
         return arg[1], arg[2]
     for line in open(path, 'r', encoding='utf-8'):
-        fs = line.split()
+        fs = line.split('\t')
         relation, arg1, arg2 = fs[1].split('/')[-1], fs[2], fs[3]
         lan1, w1 = _get_lan_and_w(arg1)
         if lan1 != 'en' or not all(w in utils.vocab for w in w1.split('_')):
