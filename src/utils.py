@@ -157,7 +157,8 @@ def build_vocab(data=None):
         writer.write('\n'.join(ner_vocab.tokens()))
         writer.close()
     # Load conceptnet relation vocabulary
-    assert os.path.exists('./data/rel_vocab')
+    if not os.path.exists('./data/rel_vocab'):
+        os.system("cut -d' ' -f1 data/concept.filter | sort | uniq > ./data/rel_vocab")
     print('Load relation vocabulary from ./data/rel_vocab...')
     for w in open('./data/rel_vocab', encoding='utf-8'):
         rel_vocab.add(w.strip())
