@@ -31,8 +31,7 @@ training on CPU will be much slower.
 Download preprocessed data from [Google Drive](https://drive.google.com/open?id=1M1saVYk-4Xh0Y0Ok6e8liDLnElnGc0P4) or [Baidu Cloud Disk](https://pan.baidu.com/s/1kWHj2z9), unzip and put them under folder data/.
 
 If you choose to preprocess dataset by yourself,
-please preprocess official dataset by `python3 src/preprocess.py`, download [Glove embeddings](http://nlp.stanford.edu/data/glove.840B.300d.zip),
-and also remember to download [ConceptNet](https://github.com/commonsense/conceptnet5/wiki/Downloads) and preprocess it with `python3 src/preprocess.py conceptnet`
+please run `./download.sh` to download [Glove embeddings](http://nlp.stanford.edu/data/glove.840B.300d.zip) and [ConceptNet](https://github.com/commonsense/conceptnet5/wiki/Downloads), and then run `./run.sh` to preprocess dataset and train the model.
 
 Official dataset can be downloaded on [hidrive](https://my.hidrive.com/lnk/DhAhE8B5).
 

@@ -4,6 +4,7 @@ import spacy
 import copy
 import json
 import math
+import glob
 import wikiwords
 
 from collections import Counter
@@ -321,10 +322,39 @@ def preprocess_race_dataset(d):
     print('Found %d examples in %s...' % (ex_cnt, d))
     writer.close()
 
+
+def build_vocab_from_raw_dataset(path='./data/*-data.json'):
+    import utils
+    word_cnt = Counter()
+    for data_path in glob.glob(path):
+        for obj in json.load(open(data_path, 'r', encoding='utf-8'))['data']['instance']:
+            if not obj['questions']:
+                continue
+            d_dict = tokenize(obj['text'])
+            word_cnt += Counter(d_dict['words'])
+            try:
+                qs = [q for q in obj['questions']['question']]
+                dummy = qs[0]['@text']
+            except:
+                # some passages have only one question
+                qs = [obj['questions']['question']]
+            for q in qs:
+                q_dict = tokenize(q['@text'])
+                word_cnt += Counter(q_dict['words'])
+                for ans in q['answer']:
+                    c_dict = tokenize(ans['@text'])
+                    word_cnt += Counter(c_dict['words'])
+    for key, val in word_cnt.most_common():
+        utils.vocab.add(key)
+    print('Vocabulary size: %d' % len(utils.vocab))
+    writer = open('./data/vocab', 'w', encoding='utf-8')
+    writer.write('\n'.join(utils.vocab.tokens()))
+    writer.close()
+
 def preprocess_conceptnet(path):
     import utils
-    utils.build_vocab()
-    writer = open('concept.filter', 'w', encoding='utf-8')
+    build_vocab_from_raw_dataset(path='./data/*-data.json')
+    writer = open('./data/concept.filter', 'w', encoding='utf-8')
     def _get_lan_and_w(arg):
         arg = arg.strip('/').split('/')
         return arg[1], arg[2]
@@ -344,12 +374,18 @@ def preprocess_conceptnet(path):
     writer.close()
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1 and sys.argv[1] == 'conceptnet':
-        preprocess_conceptnet('conceptnet-assertions-5.5.5.csv')
-        exit(0)
     init_tokenizer()
+    if len(sys.argv) > 1 and sys.argv[1] == 'conceptnet':
+        preprocess_conceptnet('./data/conceptnet-assertions-5.5.5.csv')
+        exit(0)
     preprocess_dataset('./data/trial-data.json')
     preprocess_dataset('./data/dev-data.json')
     preprocess_dataset('./data/train-data.json')
     preprocess_dataset('./data/test-data.json', is_test_set=True)
-    # preprocess_race_dataset('./data/RACE/')
+
+    import utils
+    trial_data = utils.load_data('./data/trial-data-processed.json')
+    train_data = utils.load_data('./data/train-data-processed.json')
+    dev_data = utils.load_data('./data/dev-data-processed.json')
+    test_data = utils.load_data('./data/test-data-processed.json')
+    utils.build_vocab(trial_data + train_data + dev_data + test_data)
