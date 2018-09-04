@@ -20,7 +20,7 @@ The overall model architecture is shown below:
 
 ### Prerequisite
 
-pytorch >= 0.2
+pytorch 0.2 or 0.3, won't work for pytorch >= 0.4
 
 spacy >= 2.0
 
