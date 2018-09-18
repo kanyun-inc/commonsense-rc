@@ -100,17 +100,14 @@ class TriAN(nn.Module):
         p_q_weighted_emb = nn.functional.dropout(p_q_weighted_emb, p=self.args.dropout_emb, training=self.training)
         c_q_weighted_emb = nn.functional.dropout(c_q_weighted_emb, p=self.args.dropout_emb, training=self.training)
         c_p_weighted_emb = nn.functional.dropout(c_p_weighted_emb, p=self.args.dropout_emb, training=self.training)
-        # print('p_q_weighted_emb', p_q_weighted_emb.size())
 
         p_rnn_input = torch.cat([p_emb, p_q_weighted_emb, p_pos_emb, p_ner_emb, f_tensor, p_q_rel_emb, p_c_rel_emb], dim=2)
         c_rnn_input = torch.cat([c_emb, c_q_weighted_emb, c_p_weighted_emb], dim=2)
         q_rnn_input = torch.cat([q_emb, q_pos_emb], dim=2)
-        # print('p_rnn_input', p_rnn_input.size())
 
         p_hiddens = self.doc_rnn(p_rnn_input, p_mask)
         c_hiddens = self.choice_rnn(c_rnn_input, c_mask)
         q_hiddens = self.question_rnn(q_rnn_input, q_mask)
-        # print('p_hiddens', p_hiddens.size())
 
         q_merge_weights = self.q_self_attn(q_hiddens, q_mask)
         q_hidden = layers.weighted_avg(q_hiddens, q_merge_weights)
@@ -118,16 +115,13 @@ class TriAN(nn.Module):
         p_merge_weights = self.p_q_attn(p_hiddens, q_hidden, p_mask)
         # [batch_size, 2*hidden_size]
         p_hidden = layers.weighted_avg(p_hiddens, p_merge_weights)
-        # print('p_hidden', p_hidden.size())
 
         c_merge_weights = self.c_self_attn(c_hiddens, c_mask)
         # [batch_size, 2*hidden_size]
         c_hidden = layers.weighted_avg(c_hiddens, c_merge_weights)
-        # print('c_hidden', c_hidden.size())
 
         logits = torch.sum(self.p_c_bilinear(p_hidden) * c_hidden, dim=-1)
         logits += torch.sum(self.q_c_bilinear(q_hidden) * c_hidden, dim=-1)
         proba = F.sigmoid(logits)
-        # print('proba', proba.size())
 
         return proba
