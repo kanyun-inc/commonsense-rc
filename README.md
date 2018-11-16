@@ -20,9 +20,11 @@ The overall model architecture is shown below:
 
 ### Prerequisite
 
-pytorch 0.2 or 0.3, won't work for pytorch >= 0.4
+pytorch 0.2, 0.3 or 0.4 (may have a few warnings, but that's ok)
 
 spacy >= 2.0
+
+Won't work for >= python3.7 due to `async` keyword conflict.
 
 GPU machine is preferred,
 training on CPU will be much slower.
