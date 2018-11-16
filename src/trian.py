@@ -34,8 +34,8 @@ class TriAN(nn.Module):
             input_size=doc_input_size,
             hidden_size=args.hidden_size,
             num_layers=args.doc_layers,
-            dropout_rate=0,
-            dropout_output=args.dropout_rnn_output,
+            dropout_rate=args.dropout_rnn_output,
+            dropout_output=True,
             concat_layers=False,
             rnn_type=self.RNN_TYPES[args.rnn_type],
             padding=args.rnn_padding)
@@ -46,8 +46,8 @@ class TriAN(nn.Module):
             input_size=qst_input_size,
             hidden_size=args.hidden_size,
             num_layers=1,
-            dropout_rate=0,
-            dropout_output=args.dropout_rnn_output,
+            dropout_rate=args.dropout_rnn_output,
+            dropout_output=True,
             concat_layers=False,
             rnn_type=self.RNN_TYPES[args.rnn_type],
             padding=args.rnn_padding)
@@ -58,8 +58,8 @@ class TriAN(nn.Module):
             input_size=choice_input_size,
             hidden_size=args.hidden_size,
             num_layers=1,
-            dropout_rate=0,
-            dropout_output=args.dropout_rnn_output,
+            dropout_rate=args.dropout_rnn_output,
+            dropout_output=True,
             concat_layers=False,
             rnn_type=self.RNN_TYPES[args.rnn_type],
             padding=args.rnn_padding)
