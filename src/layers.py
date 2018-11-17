@@ -64,7 +64,7 @@ class StackedBRNN(nn.Module):
             rnn_input = outputs[-1]
 
             # Apply dropout to hidden input
-            if self.dropout_rate > 0:
+            if i > 0 and self.dropout_rate > 0:
                 rnn_input = F.dropout(rnn_input,
                                       p=self.dropout_rate,
                                       training=self.training)
@@ -116,7 +116,7 @@ class StackedBRNN(nn.Module):
             rnn_input = outputs[-1]
 
             # Apply dropout to input
-            if self.dropout_rate > 0:
+            if i > 0 and self.dropout_rate > 0:
                 dropout_input = F.dropout(rnn_input.data,
                                           p=self.dropout_rate,
                                           training=self.training)
